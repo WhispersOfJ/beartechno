@@ -1,0 +1,109 @@
+# Technoscape — i3 config (i3 >= 4.22; gaps are built in, no i3-gaps needed)
+
+set $mod Mod4
+set $alt Mod1
+
+font pango:JetBrainsMono Nerd Font 10
+
+# ── Palette ─────────────────────────────────────────────
+set $bg       #0a0e14
+set $surface  #11151f
+set $fg       #a9b1d6
+set $dim      #565f89
+set $cyan     #00e5ff
+set $magenta  #ff2a6d
+set $green    #05ffa1
+set $purple   #b967ff
+set $urgent   #ff2a6d
+
+# ── Gaps & borders ──────────────────────────────────────
+gaps inner 12
+gaps outer 6
+smart_gaps on
+smart_borders on
+default_border pixel 2
+default_floating_border pixel 2
+
+client.focused          $cyan     $bg      $cyan   $cyan    $cyan
+client.focused_inactive $surface  $bg      $fg     $surface $surface
+client.unfocused        $surface  $bg      $dim    $surface $surface
+client.urgent           $magenta  $bg      $fg     $magenta $magenta
+client.placeholder      $surface  $bg      $fg     $surface $surface
+
+# ── Autostart ───────────────────────────────────────────
+exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
+exec --no-startup-id feh --bg-fill ~/wallpapers/technoscape.png
+exec --no-startup-id dunst
+exec --no-startup-id nm-applet
+exec --no-startup-id copyq
+exec --no-startup-id polybar -c ~/.config/polybar/config.ini technoscape
+
+# ── Launchers ───────────────────────────────────────────
+set $menu dmenu_run -i -p "run" \
+    -nb "$bg" -nf "$fg" -sb "$cyan" -sf "$bg" \
+    -fn "JetBrainsMono Nerd Font-11"
+bindsym $mod+d exec --no-startup-id $menu
+# Rofi as the heavier alternative
+bindsym $alt+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/technoscape.rasi
+
+# ── Workspaces ──────────────────────────────────────────
+set $ws1 "1: term"
+set $ws2 "2: web"
+set $ws3 "3: code"
+set $ws4 "4: chat"
+set $ws5 "5: media"
+set $ws6 "6: sys"
+set $ws7 "7: misc"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+
+# ── Windows ─────────────────────────────────────────────
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+b split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+a focus parent
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# Floating rules for popups & KDE strays
+for_window [window_role="pop-up"] floating enable
+for_window [class="kdeconnect"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [title="Picture-in-Picture"] floating enable, sticky enable
+
+# ── System ──────────────────────────────────────────────
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+bindsym $mod+Shift+x exec --no-startup-id i3lock -c 0a0e14
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym Print exec --no-startup-id flameshot gui

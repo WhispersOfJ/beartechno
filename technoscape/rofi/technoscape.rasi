@@ -1,0 +1,74 @@
+/* Technoscape — Rofi theme */
+
+* {
+    bg:        #0a0e14ee;
+    bg-alt:    #11151f;
+    fg:        #a9b1d6;
+    fg-dim:    #565f89;
+    cyan:      #00e5ff;
+    magenta:   #ff2a6d;
+    background-color: transparent;
+    text-color: @fg;
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+window {
+    location: center;
+    width: 640;
+    border: 2px;
+    border-color: @cyan;
+    background-color: @bg;
+    padding: 12;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    background-color: @bg-alt;
+    padding: 8;
+    margin: 0 0 8 0;
+}
+
+prompt {
+    text-color: @cyan;
+    margin: 0 8 0 0;
+}
+
+entry {
+    placeholder: "search…";
+    placeholder-color: @fg-dim;
+}
+
+listview {
+    lines: 10;
+    fixed-height: false;
+    scrollbar: false;
+}
+
+element {
+    padding: 6;
+    background-color: transparent;
+}
+
+element selected {
+    background-color: @bg-alt;
+    text-color: @cyan;
+    border: 0 0 0 2px;
+    border-color: @cyan;
+}
+
+element-text {
+    text-color: inherit;
+}
+
+mode-switcher {
+    margin: 8 0 0 0;
+}
+
+button {
+    padding: 6;
+    text-color: @fg-dim;
+}
+
+button selected {
+    text-color: @magenta;
+}

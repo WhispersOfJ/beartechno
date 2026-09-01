@@ -1,0 +1,81 @@
+# Technoscape — Alacritty
+
+[colors.primary]
+background = "#0a0e14"
+foreground = "#a9b1d6"
+bright_foreground = "#ffffff"
+dim_foreground = "#565f89"
+
+[colors.cursor]
+text = "#0a0e14"
+cursor = "#00e5ff"
+
+[colors.vi_mode_cursor]
+text = "#0a0e14"
+cursor = "#05ffa1"
+
+[colors.selection]
+text = "#0a0e14"
+background = "#00e5ff"
+
+[colors.search.matches]
+foreground = "#0a0e14"
+background = "#ffb86c"
+
+[colors.search.focused_match]
+foreground = "#0a0e14"
+background = "#05ffa1"
+
+[colors.normal]
+black   = "#11151f"
+red     = "#ff2a6d"
+green   = "#05ffa1"
+yellow  = "#ffb86c"
+blue    = "#00e5ff"
+magenta = "#b967ff"
+cyan    = "#2de2e6"
+white   = "#a9b1d6"
+
+[colors.bright]
+black   = "#565f89"
+red     = "#ff5c8a"
+green   = "#2bffa1"
+yellow  = "#ffd08a"
+blue    = "#5ce5ff"
+magenta = "#d68cff"
+cyan    = "#5ceee6"
+white   = "#ffffff"
+
+[colors.dim]
+black   = "#0a0e14"
+red     = "#cc1f57"
+green   = "#04cc80"
+yellow  = "#cc9457"
+blue    = "#00b8cc"
+magenta = "#9452cc"
+cyan    = "#24b8b8"
+white   = "#8791b6"
+
+[font]
+size = 11.0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[window]
+opacity = 0.95
+padding = { x = 8, y = 8 }
+decorations = "None"
+
+[cursor.style]
+shape = "Beam"
+blinking = "On"
