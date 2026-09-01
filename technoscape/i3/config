@@ -31,6 +31,8 @@ client.urgent           $magenta  $bg      $fg     $magenta $magenta
 client.placeholder      $surface  $bg      $fg     $surface $surface
 
 # ── Autostart ───────────────────────────────────────────
+# ── Scaling: Xft.dpi (Xresources) + font sizes match KDE Scale=2.5 on 65in 4K TV ──
+exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
 exec --no-startup-id feh --bg-fill ~/wallpapers/technoscape.png
 exec --no-startup-id dunst
@@ -41,7 +43,7 @@ exec --no-startup-id polybar -c ~/.config/polybar/config.ini technoscape
 # ── Launchers ───────────────────────────────────────────
 set $menu dmenu_run -i -p "run" \
     -nb "$bg" -nf "$fg" -sb "$cyan" -sf "$bg" \
-    -fn "JetBrainsMono Nerd Font-11"
+    -fn "JetBrainsMono Nerd Font-27"
 bindsym $mod+d exec --no-startup-id $menu
 # Rofi as the heavier alternative
 bindsym $alt+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/technoscape.rasi
